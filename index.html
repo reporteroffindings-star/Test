@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h3>Authorized CORS test</h3>
+<pre id="result">Waiting...</pre>
+
+<script>
+fetch("PASTE_IN_SCOPE_TEST_ENDPOINT_HERE", {
+    method: "GET",
+    credentials: "include"
+})
+.then(async response => {
+    const body = await response.text();
+
+    document.getElementById("result").textContent =
+        "HTTP status: " + response.status +
+        "\nResponse readable: yes" +
+        "\nResponse length: " + body.length;
+})
+.catch(error => {
+    document.getElementById("result").textContent =
+        "Cross-origin read failed: " + error;
+});
+</script>
+</body>
+</html>
